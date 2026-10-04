@@ -1,0 +1,355 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow": {
+      "type": "slideshow",
+      "blocks": {
+        "slide-0": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/press_and_go.png",
+            "rf_mob_img": "shopify://shop_images/press_and_go.png",
+            "rf_mobile_image_size": "landscape",
+            "image_overlay_opacity": 0,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": true,
+            "show_text_box": false,
+            "box_align": "middle-left",
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "color_scheme": "scheme-2"
+          }
+        },
+        "slide_AkC99B": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/dddddd.png",
+            "rf_mob_img": "shopify://shop_images/3x4_HP_Banner_LGB_Stardust_Coco.webp",
+            "rf_mobile_image_size": "adapt",
+            "image_overlay_opacity": 0,
+            "heading": "Image slide",
+            "heading_size": "h0",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": false,
+            "box_align": "middle-left",
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "color_scheme": "scheme-1"
+          }
+        }
+      },
+      "block_order": [
+        "slide-0",
+        "slide_AkC99B"
+      ],
+      "settings": {
+        "layout": "grid",
+        "slide_height": "medium",
+        "slider_visual": "dots",
+        "auto_rotate": true,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": false,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "featured-collection-0": {
+      "type": "featured-collection",
+      "custom_css": [
+        ".card__media {border-radius: 14px;}"
+      ],
+      "settings": {
+        "collection": "premium-lashes",
+        "products_to_show": 12,
+        "title": "PRESS ON LASHES",
+        "heading_size": "h2",
+        "description": "<p>Get the 'real lash' feel with our premium press on lash collection. Super soft, ultra-fine, and incredibly easy to style. Whether you’re going for a natural everyday look or a bit of extra glam, these lashes give you a flawless finish that lasts.</p>",
+        "show_description": false,
+        "description_style": "subtitle",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 12
+      }
+    },
+    "featured_collection_Be7Mn9": {
+      "type": "featured-collection",
+      "custom_css": [
+        ".card__media {border-radius: 14px;}"
+      ],
+      "settings": {
+        "collection": "lashes",
+        "products_to_show": 12,
+        "title": "DIY CLUSTER",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "subtitle",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 12
+      }
+    },
+    "featured_collection_Tme8tf": {
+      "type": "featured-collection",
+      "disabled": true,
+      "custom_css": [
+        ".card__media {border-radius: 14px;}"
+      ],
+      "settings": {
+        "collection": "diy-lash-kit",
+        "products_to_show": 12,
+        "title": "Lip stain",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "subtitle",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 12
+      }
+    },
+    "featured_collection_hrdLFt": {
+      "type": "featured-collection",
+      "custom_css": [
+        ".card__media {border-radius: 14px;}"
+      ],
+      "settings": {
+        "collection": "lip-stain",
+        "products_to_show": 12,
+        "title": "LIP STAIN",
+        "heading_size": "h2",
+        "description": "<p>Elevate your retail or professional range with our advanced 24-hour lip stain. Designed for the modern consumer, this formula eliminates the need for messy peel-off applications. The lightweight, fluid texture ensures a seamless, streak-free application that sets instantly and stays vibrant for up to 24 hours. It is the ultimate solution for clients demanding long-lasting, smudge-proof color that feels weightless on the lips.</p>",
+        "show_description": false,
+        "description_style": "subtitle",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 12
+      }
+    },
+    "featured_collection_zeMAwE": {
+      "type": "featured-collection",
+      "custom_css": [
+        ".card__media {border-radius: 14px;}"
+      ],
+      "settings": {
+        "collection": "lip-gloss-balm",
+        "products_to_show": 12,
+        "title": "LIP GLOSS BALM",
+        "heading_size": "h2",
+        "description": "<p>Upgrade your collection with the <strong>Blow Lips Lip Gloss Balm</strong>, a high-performance hybrid that delivers deep hydration with a luxurious, glass-like finish. This formula stands out with its integrated <strong>cooling metal applicator</strong>, which instantly soothes and depuffs the lips upon contact for a premium sensory experience. For any buyer, this is a strategic shelf-essential; its sleek, metallic design captures the \"clean girl\" aesthetic perfectly, while the unique cooling sensation and non-sticky wear drive the high customer loyalty and repeat visual-led purchases that define today’s beauty market.</p>",
+        "show_description": false,
+        "description_style": "subtitle",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 12
+      }
+    },
+    "rich_text_arxEtn": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_fiih4F": {
+          "type": "heading",
+          "settings": {
+            "heading": "What do we offer?",
+            "heading_size": "h1"
+          }
+        },
+        "text_TWWhaw": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>BLOW</strong> is dedicated to the <strong>easy beauty routine,</strong> specializing in lashes in both <strong>SL and MD quality </strong>and long-lasting <strong>lipstains</strong>. With over <strong>10 years of experience</strong> in marketing and branding, we focus on perfecting the <strong>customer journey</strong> and creating brands that resonate. Beyond our own collection, we offer professional <strong>product sourcing </strong>for businesses looking to elevate their inventory through our deep industry expertise.</p><p></p>"
+          }
+        },
+        "button_hPW7cm": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "About Us",
+            "button_link": "#",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_fiih4F",
+        "text_TWWhaw",
+        "button_hPW7cm"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "rf_promo_section_kQTc7P": {
+      "type": "rf-promo-section",
+      "blocks": {
+        "promo_block_fNVXMw": {
+          "type": "promo_block",
+          "disabled": true,
+          "settings": {
+            "heading": "Fluffy & Natural Lashes for Everyday Wear",
+            "subheading": "Say Goodbye to Mascara and Hello to Easy-to-Apply, Comfortable Lashes That Last All Day",
+            "link": "",
+            "button_text": "Shop Now",
+            "image": "shopify://shop_images/WhatsAppImage2025-12-10at17.14.46_6bda537b.jpg",
+            "rf_background_color": "#eff0f5",
+            "text_position": "top",
+            "heading_color": "#3b65d1",
+            "text_color": "#333333",
+            "heading_font_size": 22,
+            "text_font_size": 16,
+            "border_radius": 12,
+            "block_bg_color": "#ffffff",
+            "image_border_radius": 12,
+            "padding_top": 20,
+            "padding_right": 20,
+            "padding_bottom": 20,
+            "padding_left": 20,
+            "button_padding_top": 8,
+            "button_padding_sides": 16,
+            "button_border_radius": 6,
+            "button_bg_color": "#3b65d1",
+            "button_text_color": "#ffffff"
+          }
+        },
+        "promo_block_8apzhq": {
+          "type": "promo_block",
+          "disabled": true,
+          "settings": {
+            "heading": "Easy-to-Apply Magnetic & Strip Lashes",
+            "subheading": "Discover the Secret to Effortless Glamour with Lashes That Are Lightweight, Durable, and Totally Stunning",
+            "link": "",
+            "button_text": "Shop Now",
+            "image": "shopify://shop_images/WhatsApp_Image_2025-12-10_at_17.14.45_a2de10e0.jpg",
+            "rf_background_color": "#eff0f5",
+            "text_position": "bottom",
+            "heading_color": "#3b65d1",
+            "text_color": "#000000",
+            "heading_font_size": 22,
+            "text_font_size": 16,
+            "border_radius": 12,
+            "block_bg_color": "#ffffff",
+            "image_border_radius": 12,
+            "padding_top": 20,
+            "padding_right": 20,
+            "padding_bottom": 20,
+            "padding_left": 20,
+            "button_padding_top": 8,
+            "button_padding_sides": 16,
+            "button_border_radius": 6,
+            "button_bg_color": "#3b65d1",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "promo_block_fNVXMw",
+        "promo_block_8apzhq"
+      ],
+      "custom_css": [],
+      "name": "RF-Promo Section",
+      "settings": {
+        "gap": 100
+      }
+    }
+  },
+  "order": [
+    "slideshow",
+    "featured-collection-0",
+    "featured_collection_Be7Mn9",
+    "featured_collection_Tme8tf",
+    "featured_collection_hrdLFt",
+    "featured_collection_zeMAwE",
+    "rich_text_arxEtn",
+    "rf_promo_section_kQTc7P"
+  ]
+}

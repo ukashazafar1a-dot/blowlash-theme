@@ -1,0 +1,88 @@
+@media (min-width: 768px) {
+  .rf-banner__media {
+    border-radius: 40px;
+  }
+  .rf-slider-mobile-gutter{
+    padding-top: 30px !important;
+  }
+}
+@media (max-width: 767px) {
+  .rf-banner__media {
+    border-radius: 40px;
+  }
+  .rf-card-description{
+      line-height: 16px;
+      }
+      .banner:not(.banner--mobile-bottom):not(.email-signup-banner) .banner__box{
+  height: 350px !important;
+}
+}
+
+
+.rf-card-description{
+    font-size: 14px !important;
+}
+
+.rf-banner-content{
+  border-radius: 40px !important;
+}
+
+/* MOBILE CUSTOM IMAGE SIZES */
+@media(max-width: 749px) {
+  .mobile-image.mobile-adapt {
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  .mobile-image.mobile-portrait {
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .mobile-image.mobile-landscape {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    width: 100%;
+  }
+}
+.rf-badge{
+  position: absolute !important;
+  left: 4px !important;
+}
+
+
+/* Arrows style */
+.rf-slider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.4);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.rf-slider-button:hover {
+  background: rgba(0,0,0,0.7);
+}
+
+.slider-button--prev {
+  left: 15px;
+}
+
+.slider-button--next {
+  right: 15px;
+}
+
+.rf-slider-button svg {
+  width: 18px;
+  height: 18px;
+  fill: #fff;
+}

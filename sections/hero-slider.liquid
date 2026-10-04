@@ -1,0 +1,548 @@
+{{ 'hero-slider.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign enableSlider = true
+  if section.blocks.size == 0
+    assign enableSlider = false
+  endif
+%}
+
+{% if enableSlider %}
+  {% style %}
+    .hm-{{ section.id }} {
+      display: inherit;
+      position: relative;
+      --flkty-dot-color: {{ section.settings.btnclr }};
+    }
+    
+    .hm-{{ section.id }} .next-btn svg,
+    .hm-{{ section.id }} .prev-btn svg {
+      fill: {{ section.settings.btnclr }};
+    }
+    
+    .hm-{{ section.id }} .next-btn svg g path,
+    .hm-{{ section.id }} .prev-btn svg g {
+      fill: {{ section.settings.btnclr }};
+    }
+    
+    .hm-{{ section.id }} .next-btn:is(:hover, :focus, :active) svg g,
+    .hm-{{ section.id }} .next-btn:is(:hover, :focus, :active) svg g path,
+    .hm-{{ section.id }} .prev-btn:is(:hover, :focus, :active) svg g,
+    .hm-{{ section.id }} .prev-btn:is(:hover, :focus, :active) svg g path {
+      fill: {{ section.settings.btnhover }};
+    }
+    
+    .hm-{{ section.id }} .flickity-page-dot {
+      border: 2px solid {{ section.settings.btnclr }} !important;
+    }
+    
+    .hm-{{ section.id }} .flickity-page-dot.is-selected {
+      background: {{ section.settings.btnclr }};
+    }
+
+    .hm-{{ section.id }} .image-wrap.desktop_img {
+      display: block;
+    }
+    
+    .hm-{{ section.id }} .image-wrap.mobile_img {
+      display: none;
+    }
+    
+    @media (max-width: 768px) {
+      .hm-{{ section.id }} .image-wrap.desktop_img {
+        display: none;
+      }
+      .hm-{{ section.id }} .image-wrap.mobile_img {
+        display: block;
+      }
+    }
+    
+    @media (max-width: 750px) {
+      #shopify-section-{{ section.id }} .hero-media {
+        {% if section.blocks.first.settings.image_mobile != blank %}
+          padding-bottom: {{ 1 | divided_by: section.blocks.first.settings.image_mobile.aspect_ratio | times: 100 }}%;
+        {% else %}
+          padding-bottom: {{ 1 | divided_by: section.blocks.first.settings.image.aspect_ratio | times: 100 }}%;
+        {% endif %}
+        height: 100%;
+      }
+      
+      .hm-{{ section.id }} .hero_slider_wrapper.flickity-enabled {
+        {% if section.blocks.first.settings.image_mobile != blank %}
+          padding-bottom: {{ 1 | divided_by: section.blocks.first.settings.image_mobile.aspect_ratio | times: 100 }}%;
+        {% else %}
+          padding-bottom: {{ 1 | divided_by: section.blocks.first.settings.image.aspect_ratio | times: 100 }}%;
+        {% endif %}
+      }
+    }
+    
+    @media (min-width: 751px) {
+      #shopify-section-{{ section.id }} .hero-media {
+        padding-bottom: {{ 1 | divided_by: section.blocks.first.settings.image.aspect_ratio | times: 100 }}%;
+      }
+      
+      .hm-{{ section.id }} .hero_slider_wrapper.flickity-enabled {
+        padding-bottom: {{ 1 | divided_by: section.blocks.first.settings.image.aspect_ratio | times: 100 }}%;
+      }
+    }
+    
+    @media (max-width: 750px) {
+      .hm-{{ section.id }} .hero_slider_wrapper.flickity-enabled .single_slide.carousel-cell {
+        {% if section.blocks.first.settings.image_mobile != blank %}
+          padding-bottom: {{ 1 | divided_by: section.blocks.first.settings.image_mobile.aspect_ratio | times: 100 }}%;
+        {% else %}
+          padding-bottom: {{ 1 | divided_by: section.blocks.first.settings.image.aspect_ratio | times: 100 }}%;
+        {% endif %}
+      }
+      
+      {% if section.settings.show_arrow_on_mobile %}
+        .hm-{{ section.id }} .next-btn,
+        .hm-{{ section.id }} .prev-btn {
+          display: none;
+        }
+      {% endif %}
+    }
+    
+    /* Arrow button positioning */
+    .hm-{{ section.id }} .next-btn,
+    .hm-{{ section.id }} .prev-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      padding: 0;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .hm-{{ section.id }} .next-btn {
+      right: 20px;
+    }
+    
+    .hm-{{ section.id }} .prev-btn {
+      left: 20px;
+    }
+    
+    @media (max-width: 750px) {
+      .hm-{{ section.id }} .next-btn {
+        right: 10px;
+      }
+      .hm-{{ section.id }} .prev-btn {
+        left: 10px;
+      }
+      
+      .hm-{{ section.id }} .next-btn,
+      .hm-{{ section.id }} .prev-btn {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  {% endstyle %}
+
+  <div class="hero_main hm-{{ section.id }}">
+    <div
+      class="hero_slider_wrapper main-carousel {% if section.blocks.size > 1 %} hs-slider-main{% endif %}"
+      data-arrows="{{ section.settings.show_arrow }}"
+      data-dots="{{ section.settings.show_dots }}"
+      data-autoplay="{{ section.settings.enable_rotation }}"
+      data-rotation="{{ section.settings.rotation | append: '000' }}"
+    >
+      {% for block in section.blocks %}
+        {% assign currentTime = 'now' | date: '%Y-%m-%d %H:%M:%S' %}
+        {% assign userStartTime = block.settings.start_time %}
+        {% assign userEndTime = block.settings.end_time %}
+        {% assign showSlide = true %}
+
+        {% if userStartTime != blank and currentTime < userStartTime %}
+          {% assign showSlide = false %}
+        {% endif %}
+
+        {% if userEndTime != blank and currentTime > userEndTime %}
+          {% assign showSlide = false %}
+        {% endif %}
+
+        {% if showSlide %}
+          {% render 'slider-image',
+            block: block,
+            startTime: userStartTime,
+            endTime: userEndTime,
+            timeNow: currentTime,
+            showSlide: showSlide
+          %}
+        {% else %}
+          <script style="display:none;">
+            [{
+              image: {{ block.settings.image | json }},
+              startTime: {{ userStartTime | json }},
+              endTime:  {{- userEndTime | json -}},
+              showSlide: {{ showSlide }}
+            }]
+          </script>
+        {% endif %}
+      {% endfor %}
+    </div>
+    
+    {% if section.settings.show_arrow and section.blocks.size > 1 %}
+      <button type="button" class="prev-btn" aria-label="Previous slide">
+        {% render 'rf-slider-arrow-icon', classes: 'prev-icon' %}
+      </button>
+      <button type="button" class="next-btn" aria-label="Next slide">
+        {% render 'rf-slider-arrow-icon', classes: 'next-icon' %}
+      </button>
+    {% endif %}
+  </div>
+  
+  <script>
+  // Fixed initializeSlider function - ES5 compatible
+  (function() {
+    function initializeHeroSlider() {
+      var parents = document.querySelectorAll(".hero_main");
+      
+      if (parents.length === 0) {
+        return;
+      }
+
+      parents.forEach(function(parent) {
+        var elem = parent.querySelector(".hs-slider-main");
+        
+        // Check if slider element exists
+        if (!elem) return;
+        
+        // Get buttons
+        var nextBtn = parent.querySelector(".next-btn");
+        var prevBtn = parent.querySelector(".prev-btn");
+        var slides = elem.querySelectorAll(".single_slide");
+        
+        // Hide arrows if only one slide
+        if (slides.length <= 1) {
+          if (nextBtn) nextBtn.style.display = 'none';
+          if (prevBtn) prevBtn.style.display = 'none';
+          return;
+        }
+        
+        // Check if already initialized
+        if (elem.classList.contains("flickity-enabled")) {
+          // Reattach event listeners
+          var flkty = Flickity.data(elem);
+          if (flkty && nextBtn && prevBtn) {
+            // Update buttons if slider already exists
+            nextBtn.style.display = 'block';
+            prevBtn.style.display = 'block';
+          }
+          return;
+        }
+        
+        // Get data attributes
+        var rotationAttr = elem.getAttribute("data-rotation");
+        var rotation = rotationAttr ? parseInt(rotationAttr, 10) : 3000;
+        
+        var arrowsAttr = elem.getAttribute("data-arrows");
+        var showArrows = arrowsAttr ? arrowsAttr.toLowerCase() === "true" : false;
+        
+        var dotsAttr = elem.getAttribute("data-dots");
+        var showDots = dotsAttr ? dotsAttr.toLowerCase() === "true" : false;
+        
+        var autoplayAttr = elem.getAttribute("data-autoplay");
+        var enableAutoplay = autoplayAttr ? autoplayAttr.toLowerCase() === "true" : false;
+        
+        // Initialize Flickity
+        var flkty = new Flickity(elem, {
+          cellAlign: "left",
+          freeScroll: false,
+          contain: true,
+          prevNextButtons: false, // We use custom buttons
+          draggable: true,
+          wrapAround: true,
+          pauseAutoPlayOnHover: false,
+          adaptiveHeight: true,
+          imagesLoaded: true,
+          setGallerySize: false,
+          pageDots: showDots,
+          autoPlay: enableAutoplay ? rotation : false,
+          cellSelector: ".single_slide"
+        });
+        
+        // Add custom arrow functionality
+        if (showArrows && nextBtn && prevBtn) {
+          // Make sure arrows are visible
+          nextBtn.style.display = 'block';
+          prevBtn.style.display = 'block';
+          
+          // Add event listeners
+          nextBtn.addEventListener("click", function() {
+            flkty.next();
+          });
+          
+          prevBtn.addEventListener("click", function() {
+            flkty.previous();
+          });
+        } else {
+          // Hide arrows if not enabled
+          if (nextBtn) nextBtn.style.display = 'none';
+          if (prevBtn) prevBtn.style.display = 'none';
+        }
+      });
+    }
+
+    // Initialize when Flickity is loaded
+    function initSliderWhenReady() {
+      if (typeof Flickity === 'undefined') {
+        setTimeout(initSliderWhenReady, 100);
+        return;
+      }
+      
+      initializeHeroSlider();
+    }
+
+    // Initialize on page load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSliderWhenReady);
+    } else {
+      initSliderWhenReady();
+    }
+
+    // Reinitialize on Shopify events
+    var shopifyEvents = [
+      "shopify:section:load",
+      "shopify:section:unload",
+      "shopify:section:select",
+      "shopify:section:deselect",
+      "shopify:section:reorder",
+      "shopify:block:select",
+      "shopify:block:deselect",
+      "shopify:inspector:activate",
+      "shopify:inspector:deactivate"
+    ];
+
+    shopifyEvents.forEach(function(eventName) {
+      document.addEventListener(eventName, function() {
+        setTimeout(initSliderWhenReady, 100);
+      });
+    });
+
+    // Reinitialize on resize
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(initSliderWhenReady, 250);
+    });
+
+    // Initialize in editor mode
+    if (typeof Shopify !== 'undefined' && Shopify.designMode) {
+      document.addEventListener('shopify:section:load', function() {
+        setTimeout(initSliderWhenReady, 500);
+      });
+    }
+  })();
+  </script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Hero Slider",
+  "class": "hero_slider_section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_rotation",
+      "label": "Enable Auto Rotation",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "rotation",
+      "label": "Rotation Interval",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "unit": "sec",
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrow",
+      "label": "Show Arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dots",
+      "label": "Show Dots",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "btnclr",
+      "label": "Dots & Button Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "btnhover",
+      "label": "Button Hover Color",
+      "default": "#fbce0a"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrow_on_mobile",
+      "label": "Hide Arrows on Mobile",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Desktop Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "hreftitle",
+          "label": "Button Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Mobile Image"
+        },
+        {
+          "type": "header",
+          "content": "Slide Link"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "header",
+          "content": "Schedule Visibility"
+        },
+        {
+          "type": "paragraph",
+          "content": "Using store timezone and this format: YYYY-MM-DD HH:MM:SS Example: 2024-01-01 06:00:00"
+        },
+        {
+          "type": "text",
+          "id": "start_time",
+          "label": "Start Date & Time"
+        },
+        {
+          "type": "text",
+          "id": "end_time",
+          "label": "End Date & Time"
+        },
+        {
+          "type": "header",
+          "content": "Button 1"
+        },
+        {
+          "type": "color",
+          "id": "btn_bg_1",
+          "label": "Button 1 BG Color",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "btn_clr_1",
+          "label": "Button 1 Text Color",
+          "default": "#000"
+        },
+        {
+          "type": "color",
+          "id": "btn_hover_bg_1",
+          "label": "Button 1 Hover Background"
+        },
+        {
+          "type": "color",
+          "id": "btn_hover_clr_1",
+          "label": "Button 1 Hover Text Color"
+        },
+        {
+          "type": "text",
+          "id": "btn_text_1",
+          "label": "Button 1 Text"
+        },
+        {
+          "type": "url",
+          "id": "btn_url1",
+          "label": "Button 1 Link"
+        },
+        {
+          "type": "header",
+          "content": "Button 2"
+        },
+        {
+          "type": "color",
+          "id": "btn_bg_2",
+          "label": "Button 2 BG Color",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "btn_clr_2",
+          "label": "Button 2 Text Color",
+          "default": "#000"
+        },
+        {
+          "type": "color",
+          "id": "btn_hover_bg_2",
+          "label": "Button 2 Hover Background"
+        },
+        {
+          "type": "color",
+          "id": "btn_hover_clr_2",
+          "label": "Button 2 Hover Text Color"
+        },
+        {
+          "type": "text",
+          "id": "btn_text_2",
+          "label": "Button 2 Text"
+        },
+        {
+          "type": "url",
+          "id": "btn_url2",
+          "label": "Button 2 Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Slider",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
